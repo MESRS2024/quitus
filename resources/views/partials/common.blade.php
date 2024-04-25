@@ -1,3 +1,4 @@
+{{--
 <li class="nav-item menu-is-opening menu-open">
     <a href="#" class="nav-link {{ Request::is('mails*') ? 'active' : '' }} ">
         <i class="nav-icon fas fa-mail-bulk"></i>
@@ -67,3 +68,4 @@
         </li>
     </ul>
 </li>
+--}}

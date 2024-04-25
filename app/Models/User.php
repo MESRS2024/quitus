@@ -54,15 +54,4 @@ class User  extends Authenticatable
     ];
 
 
-    public function service(): BelongsTo
-    {
-        return $this->belongsTo(Service::class);
-    }
-
-    public function dossiers():HasMany
-    {
-       return $this->hasMany(Dossier::class, 'service_id','service_id');
-    }
-
-
 }

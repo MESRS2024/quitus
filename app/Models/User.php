@@ -38,7 +38,7 @@ class User  extends Authenticatable
     ];
 
 
-    public static array $rules = [
+    public static  $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|max:255',
         'email_verified_at' => 'nullable',
@@ -47,7 +47,7 @@ class User  extends Authenticatable
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
-    public static array $UpdateRules = [
+    public static  $UpdateRules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|max:255',
         'service_id' => 'required',

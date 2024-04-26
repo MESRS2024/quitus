@@ -26,24 +26,6 @@ class RolesTableSeeder extends Seeder
                 'level'       => 5,
             ],
             [
-                'name'        => 'Manager',
-                'slug'        => 'manager',
-                'description' => 'Manager Role',
-                'level'       => 4,
-            ],
-            [
-                'name'        => 'Secretariat',
-                'slug'        => 'secretariat',
-                'description' => 'Secretariat Role',
-                'level'       => 2,
-            ],
-            [
-                'name'        => 'C.e.s',
-                'slug'        => 'ces',
-                'description' => 'CES Role',
-                'level'       => 3,
-            ],
-            [
                 'name'        => 'User',
                 'slug'        => 'user',
                 'description' => 'User Role',

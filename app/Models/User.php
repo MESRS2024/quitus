@@ -25,7 +25,6 @@ class User  extends Authenticatable
         'email',
         'email_verified_at',
         'password',
-        'service_id'
 
     ];
 
@@ -42,7 +41,6 @@ class User  extends Authenticatable
         'name' => 'required|string|max:255',
         'email' => 'required|string|max:255',
         'email_verified_at' => 'nullable',
-        'service_id' => 'required',
         'password' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
@@ -50,7 +48,6 @@ class User  extends Authenticatable
     public static  $UpdateRules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|max:255',
-        'service_id' => 'required',
     ];
 
 

@@ -39,7 +39,7 @@ class CreateMediableTables extends Migration
                 function (Blueprint $table) {
                     $table->integer('media_id')->unsigned();
                     $table->string('mediable_type');
-                    $table->integer('mediable_id')->unsigned();
+                    $table->unsignedBigInteger('mediable_id')->unsigned();
                     $table->string('tag');
                     $table->integer('order')->unsigned();
 

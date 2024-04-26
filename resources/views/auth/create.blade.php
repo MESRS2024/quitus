@@ -50,10 +50,10 @@
 
                                 <div class="text-center">
                                     <img src="
-                                        {{(!empty($etab))?$etab->getMedia('thumbnail')->first()->getUrl():config('app.logo')}}
+                                        {{config('app.logo')}}
                                     "
                                          style="width: 185px;" alt="logo">
-                                    <h4 class="mt-1 mb-5 pb-1">{{(!empty($etab))?$etab->name_ar:config('app.name')}}</h4>
+                                    <h4 class="mt-1 mb-5 pb-1">{{config('app.name')}}</h4>
                                 </div>
                                 <form method="post" action="{{ url('/login') }}">
                                     @csrf

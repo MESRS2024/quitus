@@ -39,19 +39,18 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src=" {{(!empty($etab))?$etab->getMedia('thumbnail')->first()->getUrl():config('app.logo')}}"
+                    <img src=" {{config('app.logo')}}"
                          class="user-image img-circle elevation-2" alt="User Image">
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
                     <li class="user-header bg-primary">
-                        <img src=" {{(!empty($etab))?$etab->getMedia('thumbnail')->first()->getUrl():config('app.logo')}}"
+                        <img src=" {{config('app.logo')}}"
                              class="img-circle elevation-2"
                              alt="User Image">
                         <p>
                             {{ Auth::user()->name }}
-                            <small>{{ __('app.member_since') }} {{ Auth::user()->created_at->format('M. Y') }}</small>
                         </p>
                     </li>
                     <!-- Menu Footer-->

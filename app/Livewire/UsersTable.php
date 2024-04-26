@@ -36,9 +36,6 @@ class UsersTable extends DataTableComponent
         return [
             column::make('#','id')
                 ->format(fn($value, $row, Column $column)=> $value),// Hidden Column for Actions
-            Column::make(__('models/Users.fields.id'), "id")
-                ->sortable()
-                ->searchable(),
             Column::make(__('models/Users.fields.name'), "name")
                 ->sortable()
                 ->searchable(),

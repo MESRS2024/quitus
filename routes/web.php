@@ -31,4 +31,10 @@ Auth::routes();
 
 Route::resource('administration/users', App\Http\Controllers\UserController::class);
 
+Route::get('students/exonerated', [App\Http\Controllers\StudentController::class, 'Exonerated'])
+        ->name('students.exonerated');
 
+Route::get('students/not_exonerated', [App\Http\Controllers\StudentController::class, 'not_exonerated'])
+        ->name('students.not_exonerated');
+
+Route::resource('students', App\Http\Controllers\StudentController::class);

@@ -15,11 +15,7 @@
     @endif
 
 
-    <!-- Alpine v3 -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <!-- Focus plugin -->
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     @stack('third_party_stylesheets')
 
     @stack('page_css')
@@ -103,10 +99,10 @@
     </footer>
 </div>
 
-<script src="{{ asset('js/app.js') }}" ></script>
+<script src="{{ asset('js/app.js') }} " defer ></script>
 @stack('third_party_scripts')
 
-<script src="//unpkg.com/alpinejs" defer></script>
+
 
 @stack('page_scripts')
 </body>

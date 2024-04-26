@@ -17,7 +17,7 @@ return [
 
         'datatables'        => app_path('DataTables/'),
 
-        'livewire_tables'   => app_path('Http/Livewire/'),
+        'livewire_tables'   => app_path('Livewire/'),
 
         'repository'        => app_path('Repositories/'),
 
@@ -69,7 +69,7 @@ return [
 
         'datatables'        => 'App\DataTables',
 
-        'livewire_tables'   => 'App\Http\Livewire',
+        'livewire_tables'   => 'App\Livewire',
 
         'repository'        => 'App\Repositories',
 

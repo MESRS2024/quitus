@@ -14,7 +14,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @endif
 
-    @livewireStyles
+
     <!-- Alpine v3 -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -105,8 +105,7 @@
 
 <script src="{{ asset('js/app.js') }}" ></script>
 @stack('third_party_scripts')
-@livewireScripts
-@livewire('livewire-ui-modal')
+
 <script src="//unpkg.com/alpinejs" defer></script>
 
 @stack('page_scripts')

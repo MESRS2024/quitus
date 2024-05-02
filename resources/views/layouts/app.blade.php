@@ -33,6 +33,7 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+            <livewire:role-switcher />
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                     <img src=" {{config('app.logo')}}"

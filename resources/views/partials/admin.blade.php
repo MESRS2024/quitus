@@ -22,6 +22,14 @@
                 <p>{{__('nav.roles')}}</p>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a href="{{ route('academic-years.index') }}" class="nav-link {{ Request::is('academicYears*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-home"></i>
+                <p>@lang('models/academicYears.plural')</p>
+            </a>
+        </li>
     </ul>
+
 </li>
 

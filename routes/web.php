@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\CirculationController;
-use App\Http\Controllers\searchableMailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::resource('administration/users', App\Http\Controllers\UserController::class);
-
 Route::get('students/exonerated', [App\Http\Controllers\StudentController::class, 'Exonerated'])
         ->name('students.exonerated');
 
@@ -38,3 +34,8 @@ Route::get('students/not_exonerated', [App\Http\Controllers\StudentController::c
         ->name('students.not_exonerated');
 
 Route::resource('students', App\Http\Controllers\StudentController::class);
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::resource('administration/users', App\Http\Controllers\UserController::class);
+    Route::resource('academic-years', App\Http\Controllers\academicYearController::class);
+});

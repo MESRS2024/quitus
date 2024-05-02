@@ -4,6 +4,8 @@ namespace App\Models;
 
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Scopes\EtablissementScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,6 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class User  extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -22,9 +25,16 @@ class User  extends Authenticatable
 
     public $fillable = [
         'name',
+        'name_en',
         'email',
         'email_verified_at',
         'password',
+        'progres_token',
+        'expired_at',
+        'progres_id',
+        'uuid',
+        'idIndividu',
+        'etablissement_id',
 
     ];
 
@@ -33,7 +43,8 @@ class User  extends Authenticatable
         'email' => 'string',
         'email_verified_at' => 'datetime',
         'password' => 'string',
-        'remember_token' => 'string'
+        'remember_token' => 'string',
+        'expired_at' => 'datetime',
     ];
 
 
@@ -49,6 +60,8 @@ class User  extends Authenticatable
         'name' => 'required|string|max:255',
         'email' => 'required|string|max:255',
     ];
+
+
 
 
 }

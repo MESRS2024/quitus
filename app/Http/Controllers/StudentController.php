@@ -18,8 +18,6 @@ class StudentController extends AppBaseController
     public function __construct(StudentRepository $studentRepo)
     {
         $this->studentRepository = $studentRepo;
-        if(!Redis::exists('CachedData'))
-            $this->studentRepository->cacheKey();
     }
 
     /**
@@ -27,6 +25,7 @@ class StudentController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->studentRepository->cacheKey();
         return view('students.index');
     }
 
@@ -35,6 +34,7 @@ class StudentController extends AppBaseController
      */
     public function Exonerated(Request $request)
     {
+        $this->studentRepository->cacheKey();
         return view('students.detailed.exonerated-students-table');
     }
 
@@ -43,6 +43,7 @@ class StudentController extends AppBaseController
      */
     public function not_exonerated(Request $request)
     {
+        $this->studentRepository->cacheKey();
         return view('students.detailed.not-exonerated-students-table');
     }
 

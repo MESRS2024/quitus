@@ -8,13 +8,7 @@
                     <h1>@lang('models/students.plural')</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#popUp"
-                        class="btn btn-primary float-right"
-                        onclick="loadeditform('{{ route('students.create') }}',
-                                            '{{ trans('crud.add_new') }}')">
 
-                                             @lang('crud.add_new')
-                    </a>
                 </div>
             </div>
         </div>

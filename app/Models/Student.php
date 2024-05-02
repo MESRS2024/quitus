@@ -2,11 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\EtablissementScope;
+use App\Observers\StudentObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\Factories\HasFactory;
-class Student extends Model
+
+
+ #[ScopedBy(EtablissementScope::class)]
+ #[ObservedBy(StudentObserver::class)]
+
+ class Student extends Model
 {
-    use HasFactory;    public $table = 'students';
+    use HasFactory;
+    public $table = 'students';
 
     public $fillable = [
         'id_bac',
@@ -125,5 +136,31 @@ class Student extends Model
         'sit_brs' => 'nullable'
     ];
 
-    
-}
+
+
+
+     public function sit_bc_updated_by()
+     {
+            return $this->belongsTo(User::class, 'sit_bc_updatedBy');
+     }
+     public function sit_bf_updated_by()
+     {
+            return $this->belongsTo(User::class, 'sit_bf_updatedBy');
+     }
+     public function sit_dep_updated_by()
+     {
+            return $this->belongsTo(User::class, 'sit_dep_updatedBy');
+     }
+     public function sit_ru_updated_by()
+     {
+            return $this->belongsTo(User::class, 'sit_ru_updatedBy');
+     }
+     public function sit_brs_updated_by()
+     {
+            return $this->belongsTo(User::class, 'sit_brs_updatedBy');
+     }
+
+
+
+
+ }

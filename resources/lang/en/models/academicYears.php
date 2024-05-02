@@ -1,12 +1,11 @@
 <?php
 
 return [
-    'singular' => 'Action',
-    'plural' => 'Actions',
+    'singular' => 'academic Year',
+    'plural' => 'academic Years',
     'fields' => [
         'id' => 'Id',
-        'name_ar' => 'Name Ar',
-        'name_en' => 'Name En',
+        'description' => 'Description',
         'created_at' => 'Created At',
         'updated_at' => 'Updated At',
     ],

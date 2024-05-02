@@ -64,12 +64,17 @@ class StudentRepository extends BaseRepository
 
     public function cacheKey()
     {
-        Redis::set('CachedData',true);
-        Redis::set('dou',json_encode(['' => 'All']+$this->model::pluck('ll_dou', 'dou')->toArray()));
-        Redis::set('cycle',json_encode(['' => 'All']+$this->model::pluck('cycle', 'cycle')->toArray()));
-        Redis::set('niveau',json_encode(['' => 'All']+$this->model::pluck('niveau', 'niveau')->toArray()));
-        Redis::set('residence',json_encode(['' => 'All']+$this->model::pluck('ll_residence', 'll_residence')->toArray()));
-        Redis::set('domain',json_encode(['' => 'All']+$this->model::pluck('lc_domaine', 'lc_domaine')->toArray()));
-        Redis::set('filiere',json_encode(['' => 'All']+$this->model::pluck('ll_filiere', 'll_filiere')->toArray()));
+        if(Redis::get('CachedData'.auth()->id()) == true){
+            return;
+        }
+        Redis::set('faculte'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('ll_faculte', 'id_faculte')->toArray()));
+        Redis::set('departement'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('ll_departement', 'id_departement')->toArray()));
+        Redis::set('dou'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('ll_dou', 'dou')->toArray()));
+        Redis::set('cycle'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('cycle', 'cycle')->toArray()));
+        Redis::set('niveau'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('niveau', 'niveau')->toArray()));
+        Redis::set('residence'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('ll_residence', 'id_residence')->toArray()));
+        Redis::set('domain'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('lc_domaine', 'lc_domaine')->toArray()));
+        Redis::set('filiere'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('ll_filiere', 'll_filiere')->toArray()));
+        Redis::set('CachedData'.auth()->id(),true);
     }
 }

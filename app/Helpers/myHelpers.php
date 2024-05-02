@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
 
 if (!function_exists('getAllModels')) {
-
-
     function getAllModels()
     {
         $models = [];

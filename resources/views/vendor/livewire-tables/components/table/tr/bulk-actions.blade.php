@@ -116,14 +116,14 @@
                             @lang('Select All On Page')
                         </button>&nbsp;
 
-                        <button
+                        {{--<button
                             x-on:click="setAllSelected"
                             wire:loading.attr="disabled"
                             type="button"
                             class="btn btn-primary btn-sm"
                         >
                             @lang('Select All')
-                        </button>
+                        </button>--}}
 
                         <button
                             x-on:click="clearSelected"

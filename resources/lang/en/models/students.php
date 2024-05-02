@@ -5,6 +5,8 @@ return [
     'plural' => 'Students',
     'not_exonerated'=>'Not Exonerated',
     'exonerated'=>'Exonerated',
+    'Change_Selected' => 'Change Selected',
+    'Print_all_Certificates' => 'Print all Certificates',
     'fields' => [
         'id_bac' => 'Bac',
         'annee_bac' => 'Annee Bac',

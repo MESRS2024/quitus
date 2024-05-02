@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 
+use App\Models\JobRecoder;
 use App\Models\Scopes\EtablissementScope;
 use App\Models\Student;
 
@@ -26,7 +27,8 @@ class PdfGeneration implements ShouldQueue
      */
     public function __construct(
         public $students,
-        public $user
+        public $user,
+        public $jobId
     )
     {
 
@@ -40,12 +42,19 @@ class PdfGeneration implements ShouldQueue
         $studentsList = Student::withOutGlobalScope(EtablissementScope::class)
                                 ->whereIn('id', $this->students)
                                 ->get();
-        (new GeneratExonorationCertfcate($studentsList))->generateAllSelectedStudents($this->user, $studentsList);
-        /*$pdf = Pdf::LoadView('Documents.StudentsCertificate', ['Students'=>$studentsList]);
-        $storage = config('pdf.public_storage') . $this->user . '/';
-        if (!file_exists($storage)) {
-            mkdir($storage, 0777, true);
+        $status = (new GeneratExonorationCertfcate($studentsList))->generateAllSelectedStudents($this->user, $studentsList);
+        if ($status) {
+            JobRecoder::updateOrCreate
+            (
+                ['user_id' => $this->user, 'job_id' => $this->jobId],
+                ['job_status' => 'success']
+            );
+        }else{
+            JobRecoder::update
+            (
+                ['user_id' => $this->user, 'job_id' => $this->jobId],
+                ['job_status' => 'failed']
+            );
         }
-        $pdf->save($storage . 'Certificate_' . $this->user . '.pdf');*/
     }
 }

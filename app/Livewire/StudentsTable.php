@@ -17,10 +17,6 @@ class StudentsTable extends DataTableComponent
 
     protected $listeners = ['deleteRecord' => 'deleteRecord', 'changeRecord' => 'ChangeRecord'];
 
-    public array $bulkActions = [
-        'changeSelected' => 'Change Selected',
-        'exportPdfSelected' => 'Print all Certificates',
-    ];
     public function columns(): array
     {
 

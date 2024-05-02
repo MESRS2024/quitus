@@ -17,7 +17,7 @@
     <div class="content px-3">
 
         @include('flash::message')
-
+        <check-job></check-job>
         <div class="clearfix"></div>
 
         <div class="card">

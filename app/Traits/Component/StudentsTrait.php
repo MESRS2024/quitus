@@ -2,6 +2,7 @@
 namespace App\Traits\Component;
 
 use App\Jobs\PdfGeneration;
+use App\Models\JobRecoder;
 use App\Models\Student;
 use App\Services\GeneratExonorationCertfcate;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,10 +10,22 @@ use Illuminate\Support\Facades\Redis;
 use Laracasts\Flash\Flash;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Str;
 
 trait StudentsTrait
 {
 
+    public function mount()
+    {
+        $this->bulkActions = match (session('activeRole')) {
+            'QTC_SD' => [
+                'exportPdfSelected' => __('Models/Students.Print_all_Certificates'),
+            ],
+            default => [
+                'changeSelected' => __('Models/Students.Change_Selected'),
+            ],
+        };
+    }
     private function getField($activeRole)
         {
             return match ($activeRole) {
@@ -63,7 +76,19 @@ trait StudentsTrait
     public function exportPdfSelected()
     {
         $ids = $this->getSelected();
-        pdfGeneration::dispatch($ids, auth()->id())->onQueue('default') ;
+        $uuid = Str::uuid();
+        $jobId = pdfGeneration::dispatch($ids, auth()->id(), $uuid)->onQueue('default') ;
+        Flash::success(__('messages.update', ['model' => __('models/students.plural')]));
+
+        JobRecoder::updateOrCreate(
+            ['user_id' => auth()->id()],
+            [
+                'job_id'=> $uuid,
+                'job_status' => 'pending'
+            ]
+        );
+        session()->put('jobId', $uuid);
+        $this->js('window.location.reload()');
     }
 
     public function filters(): array

@@ -5,6 +5,8 @@ return [
     'plural' => 'الطلاب',
     'not_exonerated'=>'غير معفى',
     'exonerated'=>'معفى',
+    'Change_Selected' => 'تغيير المحدد',
+    'Print_all_Certificates' => 'طباعة كل الشهادات',
     'fields' => [
         'id_bac' => 'رقم الباكالوريا',
         'annee_bac' => 'سنة الباكالوريا',

@@ -161,6 +161,39 @@ use Illuminate\Database\Eloquent\Model;
      }
 
 
+     public function scopeExonerated($query)
+     {
+         return match (session('activeRole')) {
+             'QTC_DEP' => $query->where('sit_dep', 1),
+             'QTC_BIB_FAC' => $query->where('sit_bf', 1),
+             'QTC_BIB_CENT' => $query->where('sit_bc', 1),
+             'QTC_RU' => $query->where('sit_ru', 1),
+             'QTC_BRS' =>   $query->where('sit_brs', 1),
+             default =>  $query->where('sit_dep', 1)
+                                ->Where('sit_bf', 1)
+                                ->Where('sit_bc', 1)
+                                ->Where('sit_ru', 1)
+                                ->Where('sit_brs', 1)
+         };
+     }
+
+     public function scopeNotExonerated($query)
+     {
+         return
+             match (session('activeRole')) {
+                 'QTC_DEP' => $query->where('sit_dep', 0),
+                 'QTC_BIB_FAC' => $query->where('sit_bf', 0),
+                 'QTC_BIB_CENT' => $query->where('sit_bc', 0),
+                 'QTC_RU' => $query->where('sit_ru', 0),
+                 'QTC_BRS' => $query->where('sit_brs', 0),
+                 default => $query->where('sit_dep', 0)
+                                     ->orWhere('sit_bf', 0)
+                                     ->orWhere('sit_bc', 0)
+                                     ->orWhere('sit_ru', 0)
+                                     ->orWhere('sit_brs', 0)
+             };
+     }
+
 
 
  }

@@ -17,10 +17,6 @@ class ExoneratedStudentsTable  extends DataTableComponent
 
     protected $listeners = ['deleteRecord' => 'deleteRecord', 'changeRecord' => 'ChangeRecord'];
 
-    public array $bulkActions = [
-        'changeSelected' => 'Change Selected',
-    ];
-
     public function builder(): Builder
     {
             return $this->model::query()

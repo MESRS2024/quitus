@@ -22,6 +22,7 @@
 
         <div class="card">
             <div class="card-body">
+                @livewire('check-job')
                 @livewire('exonerated-students-table', [])
             </div>
         </div>

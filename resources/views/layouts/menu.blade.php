@@ -11,6 +11,7 @@
         <p>@lang('models/students.plural')</p>
     </a>
 </li>
+
 <li class="nav-item">
     <a href="{{ route('students.exonerated') }}" class="nav-link {{ Request::is('students/exonerated*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-hat-cowboy"></i>

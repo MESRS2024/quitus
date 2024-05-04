@@ -19,10 +19,10 @@ trait StudentsTrait
     {
         $this->bulkActions = match (session('activeRole')) {
             'QTC_SD' => [
-                'exportPdfSelected' => __('Models/Students.Print_all_Certificates'),
+                'exportPdfSelected' => __('students.Print_all_Certificates'),
             ],
             default => [
-                'changeSelected' => __('Models/Students.Change_Selected'),
+                'changeSelected' => __('models/students.Change_Selected'),
             ],
         };
     }
@@ -96,44 +96,44 @@ trait StudentsTrait
         $field = $this->getField(session('activeRole'));
 
         $filters = [
-            SelectFilter::make(__('Models/Students.fields.ll_dou'), 'll_dou')
+            SelectFilter::make(__('models/students.fields.ll_dou'), 'll_dou')
                 ->options(Redis::get('dou'.auth()->id()) ? json_decode(Redis::get('dou'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('dou', $value);
                 }),
-            SelectFilter::make(__('Models/Students.fields.ll_residence'), 'll_residence')
+            SelectFilter::make(__('models/students.fields.ll_residence'), 'll_residence')
                 ->options(Redis::get('residence'.auth()->id()) ? json_decode(Redis::get('residence'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('id_residence', $value);
                 }),
 
-            SelectFilter::make(__('Models/Students.fields.ll_faculte'), 'll_faculte')
+            SelectFilter::make(__('models/students.fields.ll_faculte'), 'll_faculte')
                 ->options(Redis::get('faculte'.auth()->id()) ? json_decode(Redis::get('faculte'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('id_faculte', $value);
                 }),
-            SelectFilter::make(__('Models/Students.fields.ll_departement'), 'll_departement')
+            SelectFilter::make(__('models/students.fields.ll_departement'), 'll_departement')
                 ->options(Redis::get('departement'.auth()->id()) ? json_decode(Redis::get('departement'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('id_departement', $value);
                 }),
-            SelectFilter::make(__('Models/Students.fields.lc_domaine'), 'lc_domaine')
+            SelectFilter::make(__('models/students.fields.lc_domaine'), 'lc_domaine')
                 ->options(Redis::get('domain'.auth()->id()) ? json_decode(Redis::get('domain'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('lc_domaine', $value);
                 }),
-            SelectFilter::make(__('Models/Students.fields.ll_filiere'), 'll_filiere')
+            SelectFilter::make(__('models/students.fields.ll_filiere'), 'll_filiere')
                 ->options(redis::get('filiere'.auth()->id()) ? json_decode(redis::get('filiere'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('ll_filiere', $value);
                 }),
-            SelectFilter::make(__('Models/Students.fields.cycle'), 'cycle')
+            SelectFilter::make(__('models/students.fields.cycle'), 'cycle')
                 ->options(redis::get('cycle'.auth()->id()) ? json_decode(redis::get('cycle'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('cycle', $value);
                 }),
 
-            SelectFilter::make(__('Models/Students.fields.niveau'), 'niveau')
+            SelectFilter::make(__('models/students.fields.niveau'), 'niveau')
                 ->options(redis::get('niveau'.auth()->id()) ? json_decode(redis::get('niveau'.auth()->id()), true) : [])
                 ->filter(function (Builder $query, $value) {
                     return $query->where('niveau', $value);
@@ -170,22 +170,22 @@ trait StudentsTrait
             Column::make("id", "id")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/Students.fields.numero_inscription'), "numero_inscription")
+            Column::make(__('models/students.fields.numero_inscription'), "numero_inscription")
                 ->searchable(),
-            Column::make(__('Models/Students.fields.nom_latin'), "nom_latin")
+            Column::make(__('models/students.fields.nom_latin'), "nom_latin")
                 ->searchable(),
-            Column::make(__('Models/Students.fields.prenom_latin'), "prenom_latin")
+            Column::make(__('models/students.fields.prenom_latin'), "prenom_latin")
                 ->searchable(),
-            Column::make(__('Models/Students.fields.nom_arabe'), "nom_arabe")
+            Column::make(__('models/students.fields.nom_arabe'), "nom_arabe")
                 ->searchable(),
-            Column::make(__('Models/Students.fields.prenom_arabe'), "prenom_arabe")
+            Column::make(__('models/students.fields.prenom_arabe'), "prenom_arabe")
                 ->searchable(),
-            Column::make(__('Models/Students.fields.date_naissance'), "date_naissance")
+            Column::make(__('models/students.fields.date_naissance'), "date_naissance")
                 ->format(function ($value) {
                     return $value->format('d/m/Y');
                 })
                 ->searchable(),
-            Column::make(__('Models/Students.fields.ll_specialite'), "ll_specialite")
+            Column::make(__('models/students.fields.ll_specialite'), "ll_specialite")
                     ->searchable()
    ];
 
@@ -195,7 +195,7 @@ trait StudentsTrait
     private function SitDepColumn()
     {
         if ((session('activeRole') == 'QTC_DEP') || session('activeRole') == 'QTC_SD') {
-            return [Column::make(__('Models/Students.fields.sit_dep'), "sit_dep")
+            return [Column::make(__('models/students.fields.sit_dep'), "sit_dep")
                 ->format(
                     fn($value, $row, Column $column) => view(
                         'common.livewire-tables.badge',
@@ -213,7 +213,7 @@ trait StudentsTrait
     private function SitBfColumn()
     {
         if (session('activeRole') == 'QTC_BIB_FAC' || session('activeRole') == 'QTC_SD'){
-            return [Column::make(__('Models/Students.fields.sit_bf'), "sit_bf")
+            return [Column::make(__('models/students.fields.sit_bf'), "sit_bf")
                 ->format(
                     fn($value, $row, Column $column) => view(
                         'common.livewire-tables.badge',
@@ -233,7 +233,7 @@ trait StudentsTrait
     {
 
         if ((session('activeRole') == 'QTC_BIB_CENT') || (session('activeRole') == 'QTC_SD')){
-            return [Column::make(__('Models/Students.fields.sit_bc'), "sit_bc")
+            return [Column::make(__('models/students.fields.sit_bc'), "sit_bc")
                 ->format(
                     fn($value, $row, Column $column) => view(
                         'common.livewire-tables.badge',
@@ -252,7 +252,7 @@ trait StudentsTrait
     private function SitRuColumn()
     {
         if (session('activeRole') == 'QTC_RU' || session('activeRole') == 'QTC_SD'){
-            return [Column::make(__('Models/Students.fields.sit_ru'), "sit_ru")
+            return [Column::make(__('models/students.fields.sit_ru'), "sit_ru")
                 ->format(
                     fn($value, $row, Column $column) => view(
                         'common.livewire-tables.badge',
@@ -271,7 +271,7 @@ trait StudentsTrait
     private function SitBrsColumn()
     {
         if (session('activeRole') == 'QTC_BRS' || session('activeRole') == 'QTC_SD'){
-            return [Column::make(__('Models/Students.fields.sit_brs'), "sit_brs")
+            return [Column::make(__('models/students.fields.sit_brs'), "sit_brs")
                 ->format(
                     fn($value, $row, Column $column) => view(
                         'common.livewire-tables.badge',

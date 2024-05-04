@@ -5,7 +5,7 @@
 
             <div class="small-box bg-{{$stat['class']}}">
                 <div class="inner">
-                    <h3>{{$stat['data']}} {{__('Models/Students.singular')}}</h3>
+                    <h3>{{$stat['data']}} {{__('models/students.singular')}}</h3>
                     <p>{{$stat['title']}}</p>
                 </div>
                 <div class="icon">

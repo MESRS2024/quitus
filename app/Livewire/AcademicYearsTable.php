@@ -8,7 +8,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\academicYear;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 
-class academicYearsTable extends DataTableComponent
+class AcademicYearsTable extends DataTableComponent
 {
     protected $model = academicYear::class;
 
@@ -32,13 +32,13 @@ class academicYearsTable extends DataTableComponent
             Column::make("Id", "id")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('models/AcademicYears.fields.description'), "description")
+            Column::make(__('models/academicYears.fields.description'), "description")
                 ->sortable()
                 ->searchable(),
-            booleanColumn::make(__('models/AcademicYears.fields.is_active'), "is_active")
+            booleanColumn::make(__('models/academicYears.fields.is_active'), "is_active")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Crud.actions'), 'id')
+            Column::make(__('crud.actions'), 'id')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('academic-years.show', $row->id),

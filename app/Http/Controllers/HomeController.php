@@ -30,9 +30,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // if empty active role and empty saved roles then redirect to the login page with the message no role for you.
+        if(empty(session('activeRole')) && empty(auth()->user()->getRoles()->first())){
+            auth()->logout();
+            return redirect()->route('login')->withErrors(['email' => 'You don\'t have any role in the system. Please contact the administrator.']);
+        }
         if(empty(session('activeRole'))){
             session(['activeRole' => auth()->user()->getRoles()->first()->name]);
-
         }else{
             session(['activeRole' => session('activeRole')]);
         }

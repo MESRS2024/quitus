@@ -57,7 +57,6 @@ class RoleSwitcher extends Component
 
     public function changeAcademicYear()
     {
-
         session(['activeAcademicYear' => $this->activeAcademicYear]);
         $this->change();
     }

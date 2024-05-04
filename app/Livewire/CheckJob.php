@@ -46,7 +46,7 @@ class CheckJob extends Component
         }
         if($this->status == 'success'){
             $this->messages = 'file is ready you can download it';
-            $this->url =asset('/Documents/'. auth()->id() .'/Certificate_' . auth()->id() . '.pdf');
+            $this->url =url('/storage/Documents/'. auth()->id() .'/Certificate_' . auth()->id() . '.pdf');
 
         }
 

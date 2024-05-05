@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Scopes\EtablissementScope;
 use App\Models\Student;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Redis;
@@ -76,5 +77,13 @@ class StudentRepository extends BaseRepository
         Redis::set('domain'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('lc_domaine', 'lc_domaine')->toArray()));
         Redis::set('filiere'.auth()->id(),json_encode(['' => 'All']+$this->model()::pluck('ll_filiere', 'll_filiere')->toArray()));
         Redis::set('CachedData'.auth()->id(),true);
+    }
+
+    public function findByUuid($uuid)
+    {
+        //return from redis cache if exists else from the database
+        return \Cache::remember('student_'.$uuid, 60*60*24, function () use ($uuid) {
+            return $this->model()::withOutGlobalScope(EtablissementScope::class)->where('uuid', $uuid)->get();
+        });
     }
 }

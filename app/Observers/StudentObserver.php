@@ -39,6 +39,12 @@ class StudentObserver
         };
     }
 
+    public function updated(Student $student): void
+    {
+        \Cache::forget('student_'.$student->uuid);
+        \Cache::put('student_'.$student->uuid, collect(['data'=>$student]), 60*60*24);
+    }
+
     /**
      * Handle the Student "deleted" event.
      */

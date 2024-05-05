@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\StudentResource;
 use App\Repositories\StudentRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -46,6 +47,19 @@ class StudentController extends AppBaseController
         $this->studentRepository->cacheKey();
         return view('students.detailed.not-exonerated-students-table');
     }
+
+    /**
+     * returns the students status based on the student uuid (exonerated or not exonerated)
+     */
+    public function studentStatus($uuid){
+        $student = $this->studentRepository->findByUuid($uuid);
+        if($student){
+            return StudentResource::collection($student);
+        }
+        return response()->json(['message' => 'Student not found'], 404);
+    }
+
+
 
 
     /**

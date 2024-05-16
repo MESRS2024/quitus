@@ -22,6 +22,9 @@
 
         <div class="card">
             <div class="card-body">
+                @role('qtcsd')
+                    @livewire('check-job')
+                @endrole
                 @livewire('students-table', [])
             </div>
         </div>

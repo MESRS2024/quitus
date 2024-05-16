@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\PdfGeneration;
+use App\Models\academicYear;
 use App\Models\Student;
 use App\Services\progresServices;
 use App\Services\statsService;
 use Illuminate\Http\Request;
+use Session;
 
 class HomeController extends Controller
 {
@@ -40,15 +42,20 @@ class HomeController extends Controller
         }else{
             session(['activeRole' => session('activeRole')]);
         }
+        if(empty(session('activeAcademicYear'))){
+            session(['activeAcademicYear' => academicYear::where('is_active', 1)->first()->id]);
+        }else{
+            session(['activeAcademicYear' => session('activeAcademicYear')]);
+        }
         $structure_id = (new progresServices())
             ->getStrecture(auth()->user()->idIndividu,
-                auth()->user()->getRoles()->first()->name, auth()->user()->progres_token);
-        if (!empty($response['structure_id'])) {
-            session(['strecture_id' => $response['structure_id']]);
-        }
-        if (!empty($response['group_id'])) {
-            session(['group_id' => $response['group_id']]);
-        }
+                session('activeRole'),
+                auth()->user()->progres_token);
+
+        session(['strecture_id' => $structure_id['structure_id']]);
+        session(['group_id' => $structure_id['group_id']]);
+
+
 
         $stats = (new statsService())->getStats();
 

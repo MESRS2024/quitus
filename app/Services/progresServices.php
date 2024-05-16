@@ -35,7 +35,7 @@ class progresServices
 
             return  [
                         'structure_id'=>$result?->json()[0]['idStructure'],
-                        'group_id'=>$result?->json()[0]['structureIdRefEtablissement']
+                        'group_id'=>$result?->json()[0]['groupeIdRefEtablissement']
                     ];
         } catch (\Exception $e) {
             return $e->getMessage();

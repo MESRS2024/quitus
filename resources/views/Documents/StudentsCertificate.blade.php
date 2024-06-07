@@ -69,11 +69,12 @@
 
     <table width=100%>
         <tr >
-            <td width=45% style="text-align: center;font-size: 20px">
-                <strong>:  بتاريخ   </strong>
-            </td>
-            <td dir="rtl" width=55% style="font-size: 20px">
+
+            <td dir="rtl" width=45% style="font-size: 20px">
                 <strong> الرقم:  </strong>
+            </td>
+            <td width=55% style="text-align: center;font-size: 20px">
+                <strong>:  بتاريخ   </strong>
             </td>
         </tr>
     </table>
@@ -82,7 +83,6 @@
         <tr >
             <td style="font-size: 30px;text-align: center" >
                 <p>
-
                     التبرئة الإلكترونیة لنهاية الدراسة
                 <p>
             </td>
@@ -106,7 +106,6 @@
 
         <tr >
             <td width="50%" style="font-size: 15px" dir="rtl">
-
                 <p>
                     الاسم :{{$student->prenom_arabe}}
                 <p>
@@ -127,15 +126,16 @@
 
 
             </td>
-            <td width="30%" style="font-size: 15px" dir="rtl">
-                <p>
-                    ب :  {{$student->lieu_naissance}}
-                <p>
-            </td>
+
             <td width="40%" style="font-size: 15px" dir="rtl">
 
                 <p>
                     تاريخ و مكان الميلاد  :  {{$student->date_naissance}}
+                <p>
+            </td>
+            <td width="30%" style="font-size: 15px" dir="rtl">
+                <p>
+                    ب :  {{$student->lieu_naissance}}
                 <p>
             </td>
         </tr >
@@ -144,18 +144,19 @@
     <table width=100%>
 
         <tr >
-            <td width="40%" style="font-size: 15px" dir="rtl">
-
-                <p>
-                    القسم :  {{$student->ll_departement}}
-                <p>
-            </td>
             <td width="60%" style="font-size: 15px" dir="rtl">
 
                 <p>
                     الكلية :  {{$student->ll_faculte}}
                 <p>
             </td>
+            <td width="40%" style="font-size: 15px" dir="rtl">
+
+                <p>
+                    القسم :  {{$student->ll_departement}}
+                <p>
+            </td>
+
 
         </tr >
     </table>
@@ -173,7 +174,7 @@
             <td width="50%" style="font-size: 15px" dir="rtl">
 
                 <p>
-                    السنة :   2022/2023
+                    السنة :   2023 / 2024
                 <p>
             </td>
 
@@ -185,7 +186,6 @@
         <tr >
             <td style="font-size: 15px;text-align: center" dir="rtl" >
                 <p>
-
                     قد قام بتسوية كل الالتزامات تجاه المصالح المعنية و سلمت هذه لاستعمالها في حدود ما يسمح به القانون
                 <p>
             </td>
@@ -211,8 +211,6 @@
                 <label>
                     <br>سحب الشهادة
                     <span>&#10004;</span>
-
-
                 </label>
             </td>
 
@@ -224,7 +222,6 @@
         <tr   style="border: 1px solid;width: 100%;border-collapse: collapse;">
             <th width="33%" height="30px"  style="text-align:center">	الكلية / القسم</th>
             <th width="33%" style="text-align:center">مكتبة الكلية / المعهد</th>
-
             <th width="33%" style="text-align:center">المكتبة المركزية</th>
 
 
@@ -277,7 +274,12 @@
 </table>
 <table width=100%>
 <tr >
-
+    <td  width="70%" style="font-size: 20px;text-align: right" dir="rtl" >
+        <p>
+            <br>
+            لا تسلم الا نسخة واحدة خلال الموسم الجامعي.
+        <p>
+    </td>
 <td  width="30%" style="font-size: 20px;text-align: center" dir="rtl" >
     <p>
         <br>
@@ -285,12 +287,7 @@
     <p>
 </td>
 
-<td  width="70%" style="font-size: 20px;text-align: right" dir="rtl" >
-    <p>
-        <br>
-        لا تسلم الا نسخة واحدة خلال الموسم الجامعي.
-    <p>
-</td>
+
 
 
 </tr >

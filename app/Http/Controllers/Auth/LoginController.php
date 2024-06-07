@@ -96,6 +96,7 @@ class LoginController extends Controller
 
             //dd($user);
             $roles = $progresServices->getRoles($response['idIndividu'], $response['token']);
+           // dd($roles);
             $user->name_en=$user->name = $roles->json()[0]['nomLtIndividu'].' '. $roles->json()[0]['prenomLtIndividu'];
             $user->save();
             $roles = collect($roles->json());

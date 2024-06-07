@@ -32,8 +32,10 @@ class progresServices
     {
         try {
             $result = Http::withHeaders(['Authorization'=>$token])->get($this->rolesUrl.$id.'/'.$role);
+            //TODO add establishment
 
             return  [
+                       // 'etablissement_id' => $result?->json()[0]['idIndividu'],
                         'structure_id'=>$result?->json()[0]['idStructure'],
                         'group_id'=>$result?->json()[0]['groupeIdRefEtablissement']
                     ];

@@ -130,7 +130,7 @@
             <td width="40%" style="font-size: 15px" dir="rtl">
 
                 <p>
-                    تاريخ و مكان الميلاد  :  {{$student->date_naissance}}
+                    تاريخ و مكان الميلاد  :  {{$student->date_naissance->format('y-m-d')}}
                 <p>
             </td>
             <td width="30%" style="font-size: 15px" dir="rtl">

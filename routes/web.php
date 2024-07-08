@@ -24,8 +24,7 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controller
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('students/exonerated', [App\Http\Controllers\StudentController::class, 'Exonerated'])
         ->name('students.exonerated');

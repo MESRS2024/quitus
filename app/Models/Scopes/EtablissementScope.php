@@ -34,7 +34,8 @@ class EtablissementScope implements Scope
                 $builder->where('id_faculte', session('strecture_id'));
                 break;
             case 'QTC_RU': //Gestion des acquittements résidence universitaire
-                $builder->where('id_residence', session('strecture_id'));
+                //dd(auth()->user()->etablissement_id);
+                $builder->where('id_residence', auth()->user()->etablissement_id);
                 break;
             case 'QTC_BRS': //Gestion des acquittements DOU
                 $builder->where('dou', session('group_id'));

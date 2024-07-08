@@ -13,6 +13,7 @@ class progresServices
     {
         try {
             $result = Http::acceptJson()->post($this->authUrl, $data);
+            //dd($result?->json()['etablissementId']);
             return $result;
         } catch (\Exception $e) {
             return $e->getMessage();

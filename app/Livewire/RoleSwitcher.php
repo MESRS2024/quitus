@@ -24,7 +24,7 @@ class RoleSwitcher extends Component
 
     public function mount()
     {
-        $this->roles = [" "=>" Choose your Role "]+auth()->user()->getRoles()->pluck('description', 'name')->toArray();
+        $this->roles = ["0"=>" Choose your Role "]+auth()->user()->getRoles()->pluck('description', 'name')->toArray();
         $this->activeRole = session('activeRole') ?? auth()->user()->getRoles()->first()->name;
         $this->activeAcademicYear = session('activeAcademicYear') ?? academicYear::where('is_active', 1)->first()->id;
         $this->academicYear = [" "=>" Choose your Academic Year "]+academicYear::pluck('description', 'id')->toArray();

@@ -52,7 +52,7 @@ class HomeController extends Controller
                 session('activeRole'),
                 auth()->user()->progres_token);
 
-        session(['etablissement_id' => $structure_id['etablissement_id']]);
+//        session(['etablissement_id' => $structure_id['etablissement_id']]);
         session(['strecture_id' => $structure_id['structure_id']]);
         session(['group_id' => $structure_id['group_id']]);
 
